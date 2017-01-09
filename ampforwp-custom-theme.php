@@ -31,7 +31,7 @@ add_action('init','ampforwp_custom_theme_files_register', 10);
 
 function ampforwp_custom_theme_files_register(){
 	add_filter( 'amp_post_template_file', 'ampforwp_custom_new_template', 10, 3 );
-	add_filter( 'ampforwp_related_post_number', 'ampforwp_new_filter_output', 10, 1 ); 
+	add_filter( 'amp_post_template_file', 'ampforwp_custom_footer_file', 10, 2 );
 }
 
 function ampforwp_custom_new_template( $file, $type, $post ) { 
@@ -49,9 +49,14 @@ function ampforwp_custom_new_template( $file, $type, $post ) {
 
 	return $file;
 }
-function ampforwp_new_filter_output($value) {
-	return 4;
+
+function ampforwp_custom_footer_file($file, $type ){
+	if ( 'footer' === $type ) {
+		$file = AMPFORWP_CUSTOM_THEME . '/template/footer.php';
+	}
+	return $file;
 }
+
 
 add_action( 'amp_post_template_head', 'amp_post_template_add_custom_google_font');
 

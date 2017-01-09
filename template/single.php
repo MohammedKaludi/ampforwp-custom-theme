@@ -36,17 +36,21 @@
 							</amp-img>
 							<header class="amp-wp-article-header ampforwp-title">
 								<h1 class="amp-wp-title"><?php echo wp_kses_data( $this->get( 'post_title' ) ); ?></h1>
-								<div class="ampforwp-meta-info">
-									<span>Politial News By Dan Formmer</span>
-								</div>
+								<?php $post_author = $this->get( 'post_author' ); if ( $post_author ) : ?>
+									<div class="ampforwp-meta-info">							
+										<span>By <?php echo esc_html( $post_author->display_name ); ?></span>
+									</div>
+								<?php endif; ?>
 							</header>
 						</div><?php
 					}
 				?>
 
 				<div class="amp-post-social-share">
-					<amp-social-share type="facebook" width="200" height="35" data-param-app_id="254325784911610"></amp-social-share>
-					<amp-social-share type="twitter" width="200" height="35" data-param-text="<?php echo wp_kses_data( $this->get( 'post_title' ) ); ?>" data-param-url="<?php echo trailingslashit( get_permalink() ) . AMP_QUERY_VAR ; ?>"></amp-social-share>
+					<ul>
+						<li class="twitter"><a href="https://twitter.com/intent/tweet?status=<?php echo wp_kses_data( $this->get( 'post_title' ) ); ?> <?php echo wp_kses_data( get_permalink() ) . AMP_QUERY_VAR ; ?>">Tweet This</a></li> 
+						<li class="facebook"><a href="https://www.facebook.com/share.php?u=<?php echo wp_kses_data( get_permalink() ) . AMP_QUERY_VAR ; ?>&t=<?php echo $this->get( 'post_title' ); ?>">Share This</a></li>
+					</ul>					
 				</div>
 
 				<div class="amp-wp-article-content"> <?php
@@ -70,9 +74,11 @@
 					<?php $this->load_parts( array( 'ampforwp-related-posts' ) ); ?>
 				</div>
 
-				<div class="comment-button-wrapper">
-			    	<a href="<?php echo get_permalink().'#commentform' ?>"> Leave a Comment </a>
-				</div>
+				<?php if ( comments_open() ) { ?>
+					<div class="comment-button-wrapper">
+				    	<a href="<?php echo get_permalink().'#commentform' ?>"> Leave a Comment </a>
+					</div>
+				<?php } ?>
 
 
 			<?php do_action('ampforwp_post_after_design_elements') ?>
