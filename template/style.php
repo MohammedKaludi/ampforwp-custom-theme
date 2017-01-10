@@ -161,11 +161,14 @@ function ampforwp_custom_style() { ?>
 	.related_posts ol li p {
 		display: none
 	}
+	.related_posts ol li amp-img {
+		margin-right: 8px;
+	}
 	.related_posts ol li:nth-of-type(2n) amp-img{
-		margin:0px 0px 0px 15px ;
+		margin:0px 0px 0px 8px ;
 	}
 	.related_posts ol li:nth-of-type(2n) .related_link{
-		margin:0px 0px 0px 15px ;
+		margin:0px 0px 0px 8px ;
 	}
 	.related_link {
 		line-height: 1.1;
