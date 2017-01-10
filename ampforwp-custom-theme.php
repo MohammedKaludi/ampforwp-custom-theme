@@ -16,7 +16,7 @@ define('AMPFORWP_CUSTOM_THEME', plugin_dir_path( __FILE__ ));
 
 // Remove old files
 add_action('init','ampforwp_custom_theme_remove_old_files',11);
-function ampforwp_custom_theme_remove_old_files(){ 
+function ampforwp_custom_theme_remove_old_files(){
 	remove_filter( 'amp_post_template_file', 'ampforwp_custom_header', 10, 3 );
 	if ( is_single() ) {
 		remove_filter( 'amp_post_template_file', 'ampforwp_custom_template', 10, 3 );
@@ -42,7 +42,11 @@ function ampforwp_custom_new_template( $file, $type, $post ) {
 			$file = AMPFORWP_CUSTOM_THEME . '/template/single.php';
 	 	}
 	}
-
+	if ( is_home() ) {
+        if ( 'single' === $type ) {
+            $file = AMPFORWP_CUSTOM_THEME . '/template/index.php';
+        }
+    }
 	if ( 'header-bar' === $type ) {
 		$file = AMPFORWP_CUSTOM_THEME . '/template/header-bar.php';
 	}
