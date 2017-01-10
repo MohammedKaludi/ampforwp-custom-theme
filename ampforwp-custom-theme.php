@@ -30,11 +30,20 @@ function ampforwp_custom_theme_remove_old_files(){
 add_action('init','ampforwp_custom_theme_files_register', 10);
 
 function ampforwp_custom_theme_files_register(){
-	add_filter( 'amp_post_template_file', 'ampforwp_custom_new_template', 10, 3 );
+	add_filter( 'amp_post_template_file', 'ampforwp_custom_header_file', 10, 2 );
+	add_filter( 'amp_post_template_file', 'ampforwp_designing_custom_template', 10, 3 );
 	add_filter( 'amp_post_template_file', 'ampforwp_custom_footer_file', 10, 2 );
 }
 
-function ampforwp_custom_new_template( $file, $type, $post ) { 
+function ampforwp_custom_header_file( $file, $type ) { 
+
+	if ( 'header-bar' === $type ) {
+		$file = AMPFORWP_CUSTOM_THEME . '/template/header-bar.php';
+	}
+
+	return $file;
+}
+function ampforwp_designing_custom_template( $file, $type, $post ) { 
 
 	// Custom Single file
     if ( is_single() || is_page() ) {
@@ -47,9 +56,6 @@ function ampforwp_custom_new_template( $file, $type, $post ) {
             $file = AMPFORWP_CUSTOM_THEME . '/template/index.php';
         }
     }
-	if ( 'header-bar' === $type ) {
-		$file = AMPFORWP_CUSTOM_THEME . '/template/header-bar.php';
-	}
 
 	return $file;
 }
