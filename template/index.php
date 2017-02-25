@@ -2,8 +2,8 @@
 <!doctype html>
 <html amp <?php echo AMP_HTML_Utils::build_attributes_string( $this->get( 'html_tag_attributes' ) ); ?>>
 <head>
-	<meta charset="utf-8">
-    <link rel="dns-prefetch" href="https://cdn.ampproject.org">
+<meta charset="utf-8">
+<link rel="dns-prefetch" href="https://cdn.ampproject.org">
 <?php
 global $redux_builder_amp;
 if ( is_home() || is_front_page()  ){
@@ -76,10 +76,7 @@ if ( is_home() || is_front_page()  ){
 
 		<?php endif; ?>
 
-	<?php do_action('ampforwp_post_after_design_elements') ?>
-
 </article>
-
 
 
 <?php $this->load_parts( array( 'footer' ) ); ?>
