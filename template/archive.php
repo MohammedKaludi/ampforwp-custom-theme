@@ -30,6 +30,8 @@ if ( is_home() || is_front_page()  || ( is_archive() && $redux_builder_amp['ampf
 
 <?php do_action('ampforwp_post_before_design_elements') ?>
 
+    
+    this is archive
 <!-- Loop Starts -->  
 		<?php
 			if ( get_query_var( 'paged' ) ) {

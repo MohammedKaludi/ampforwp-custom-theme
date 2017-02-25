@@ -1,5 +1,4 @@
-<?php
-add_action('amp_post_template_css', 'ampforwp_custom_style', 11);
+<?php add_action('amp_post_template_css', 'ampforwp_custom_style', 11);
 function ampforwp_custom_style() {  
 	global $redux_builder_amp;
 	$get_customizer = new AMP_Post_Template( $post_id );
@@ -107,9 +106,6 @@ function ampforwp_custom_style() {
     .amp-wp-article-header {
         align-items: center;
         align-content: stretch;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         margin: 1.5em 16px 1.5em;
     }
     .amp-wp-title {
@@ -198,7 +194,7 @@ function ampforwp_custom_style() {
         margin-left: 16px;
     }
     .wp-caption-text {
-        font-size: .875em;
+        font-size: 12px;
         line-height: 1.5em;
         margin: 0;
         padding: .66em 10px .75em;
@@ -719,10 +715,10 @@ function ampforwp_custom_style() {
 
 
 /********************************************
-
+    **
     Custom Theme CSS for AMP
     NOTE: Enter your CSS below for the Custom AMP theme
-    
+    **
 *********************************************/
 	html {	
 		background: #fff;
@@ -818,11 +814,13 @@ function ampforwp_custom_style() {
 	.ampforwp-featured-holder .ampforwp-title {
         bottom: 10px;
         position: absolute;
-        margin: 0 2.5% 15px;
+        margin: 0;
         text-align: center;
         z-index: 10;
         display: inline-block;
-	}
+        width: 100%;
+        margin-bottom:15px;
+    }
 	.ampforwp-meta-info {	
 		color: #fff ; 
 	    display: block;
@@ -915,32 +913,6 @@ function ampforwp_custom_style() {
 	#footer p{
 	    margin: 0
 	}
-    @media screen and (max-width: 1200px) and (min-width: 600px) {
-        .related_posts ol li:nth-of-type(2n) amp-img{
-            margin:0px 15px 0px 0px ;
-        }
-        .related_posts ol li:nth-of-type(2n) .related_link{
-            margin:0px 15px 0px 0px ;
-        }	
-    }
-    @media screen and (max-width: 450px) and (min-width: 320px) {
-        .amp-post-social-share amp-social-share {
-            padding: 0 20px;
-        }
-        .amp-wp-title {
-            font-size: 22px;
-            line-height:28px;
-            margin-bottom:0
-        }
-        .ampforwp-featured-holder .ampforwp-title {
-            bottom: 0; 
-            margin: 0 25px 10px;
-        }
-
-        .ampforwp-meta-info span {
-            font-size: 12px;
-        }
-    }
     .amp-wp-article-content p{
         margin-top: -2px;
         padding-right: 6px;
@@ -951,11 +923,34 @@ function ampforwp_custom_style() {
     .toggle-text span:nth-child(3){
         top:14px;
     }
+    @media screen and (max-width: 1200px) and (min-width: 600px) {
+        .related_posts ol li:nth-of-type(2n) amp-img{
+            margin:0px 15px 0px 0px ;
+        }
+        .related_posts ol li:nth-of-type(2n) .related_link{
+            margin:0px 15px 0px 0px ;
+        }	
+    }
+    @media screen and (max-width: 600px){
+        .single-post .amp-wp-header{ margin-bottom:0 }
+    }
+    @media screen and (max-width: 450px) and (min-width: 320px) {
+        .amp-post-social-share amp-social-share {
+            padding: 0 20px;
+        }
+        .amp-wp-title {
+            font-size: 22px;
+            line-height:28px;
+            margin-bottom:0
+        } 
+        .ampforwp-meta-info span {
+            font-size: 12px;
+        }
+    }
 
 
 
-
-
-    /* Custom Style Code */
+    /* Custom CSS Code from Options Panel */
 	<?php echo $redux_builder_amp['css_editor']; ?>
-	<?php } ?>
+
+<?php } ?>

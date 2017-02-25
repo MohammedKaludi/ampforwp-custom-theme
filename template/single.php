@@ -19,12 +19,11 @@
 		<article class="amp-wp-article">
 			<?php do_action('ampforwp_post_before_design_elements') ?>
 
+<!-- Featured Image Starts -->  
 				<?php if ( has_post_thumbnail() ) { 
 						$thumb_id = get_post_thumbnail_id();
 						$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large', true);
-						$thumb_url = $thumb_url_array[0];
-
-						// var_dump($thumb_url_array); ?>
+						$thumb_url = $thumb_url_array[0]; ?>
 						<div class="ampforwp-featured-holder">
 							<amp-img
 							    src="<?php echo $thumb_url ?>"		   
@@ -44,17 +43,20 @@
 								<?php endif; ?>
 							</header>
 						</div><?php } ?>
+<!-- Featured Image Ends -->  
 
+<!-- Social Sharing Starts -->  
 				<div class="amp-post-social-share">
 					<ul>
 						<li class="twitter"><a href="https://twitter.com/intent/tweet?status=<?php echo wp_kses_data( $this->get( 'post_title' ) ); ?> <?php echo wp_kses_data( get_permalink() ) . AMP_QUERY_VAR ; ?>">Tweet This</a></li> 
 						<li class="facebook"><a href="https://www.facebook.com/share.php?u=<?php echo wp_kses_data( get_permalink() ) . AMP_QUERY_VAR ; ?>&t=<?php echo $this->get( 'post_title' ); ?>">Share This</a></li>
 					</ul>					
 				</div>
-
-				<div class="amp-wp-article-content"> <?php
-
-					do_action('ampforwp_inside_post_content_before'); 
+<!-- Social Sharing Ends -->  
+            
+<!-- Article Content Starts -->  
+				<div class="amp-wp-article-content">
+                    <?php do_action('ampforwp_inside_post_content_before'); 
 						$amp_custom_content_enable = get_post_meta( $this->get( 'post_id' ) , 'ampforwp_custom_content_editor_checkbox', true);
 
 						// Normal Front Page Content
@@ -68,16 +70,21 @@
 					do_action('ampforwp_inside_post_content_after') ?>
 
 				</div>
+<!-- Article Content Ends -->  
 
+<!-- Related Posts Start -->  
 				<div class="ampforwp-custom-related-post">
 					<?php $this->load_parts( array( 'ampforwp-related-posts' ) ); ?>
 				</div>
+<!-- Related Posts End -->  
 
+<!-- Comment Button Start -->  
 				<?php if ( comments_open() ) { ?>
 					<div class="comment-button-wrapper">
 				    	<a href="<?php echo get_permalink().'#commentform' ?>"> Leave a Comment </a>
 					</div>
 				<?php } ?>
+<!-- Comment Button End -->  
 
 
 			<?php do_action('ampforwp_post_after_design_elements') ?>
