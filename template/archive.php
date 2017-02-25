@@ -31,7 +31,10 @@ if ( is_home() || is_front_page()  || ( is_archive() && $redux_builder_amp['ampf
 <?php do_action('ampforwp_post_before_design_elements') ?>
 
     
-    this is archive
+  <?php if ( is_archive() ) {
+    the_archive_title( '<h3 class="archive-page-title">', '</h3>' );
+    the_archive_description( '<div class="taxonomy-description">', '</div>' );
+  } ?>
 <!-- Loop Starts -->  
 		<?php
 			if ( get_query_var( 'paged' ) ) {

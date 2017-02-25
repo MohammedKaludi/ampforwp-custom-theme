@@ -768,7 +768,7 @@ function ampforwp_custom_style() {
 		margin: 0;		
 		display: inline-block;
 		font-size: 15px;
-		line-height: 1.3;
+		line-height: 1.5;
         color:#666
 	}
 	.amp-loop-list {
@@ -900,6 +900,10 @@ function ampforwp_custom_style() {
 		border:0;
 		color: #fff;
 	}
+    /* Archive */
+    .archive-page-title{
+        margin:25px 25px 10px 25px;
+    }
 	/* Footer */
 	#footer{
 		border-top:1px solid #ddd;
@@ -932,7 +936,7 @@ function ampforwp_custom_style() {
         }	
     }
     @media screen and (max-width: 600px){
-        .single-post .amp-wp-header{ margin-bottom:0 }
+        .amp-wp-header{ margin-bottom:0 }
     }
     @media screen and (max-width: 450px) and (min-width: 320px) {
         .amp-post-social-share amp-social-share {
@@ -940,8 +944,7 @@ function ampforwp_custom_style() {
         }
         .amp-wp-title {
             font-size: 22px;
-            line-height:28px;
-            margin-bottom:0
+            line-height:28px; 
         } 
         .ampforwp-meta-info span {
             font-size: 12px;
