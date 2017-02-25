@@ -28,8 +28,29 @@ if ( is_home() || is_front_page()  ){
 
 	<?php do_action('ampforwp_post_before_design_elements') ?>
 
-			<?php if ( have_posts() ) :
-		    	while ( have_posts() ) : the_post(); ?>
+		<?php
+			if ( get_query_var( 'paged' ) ) {
+		        $paged = get_query_var('paged');
+		    } elseif ( get_query_var( 'page' ) ) {
+		        $paged = get_query_var('page');
+		    } else {
+		        $paged = 1;
+		    }
+
+		    $exclude_ids = get_option('ampforwp_exclude_post');
+
+			$args = array(
+				'post_type'           => 'post',
+				'orderby'             => 'date',
+				'paged'               => esc_attr($paged),
+				'post__not_in' 		  => $exclude_ids,
+        'has_password' => false ,
+        'post_status'=> 'publish'
+			);
+			$filtered_args = apply_filters('ampforwp_query_args', $args);
+			$q = new WP_Query( $filtered_args ); ?>
+
+			<?php if ( $q->have_posts() ) : while ( $q->have_posts() ) : $q->the_post(); ?>
 	        <div class="amp-wp-content amp-wp-article-header amp-loop-list">
 	        	<div class="amp-wp-content-loop">
 

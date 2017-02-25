@@ -81,3 +81,10 @@ function amp_post_template_add_custom_google_font( $amp_template ) {
 }
 
 require_once( AMPFORWP_CUSTOM_THEME . '/template/style.php' );
+
+	// Add Scripts only when AMP Menu is Enabled
+	if( has_nav_menu( 'amp-menu' ) ) {
+		if ( empty( $data['amp_component_scripts']['amp-accordion'] ) ) {
+			$data['amp_component_scripts']['amp-accordion'] = 'https://cdn.ampproject.org/v0/amp-accordion-0.1.js';
+		}
+	}

@@ -19,8 +19,7 @@
 		<article class="amp-wp-article">
 			<?php do_action('ampforwp_post_before_design_elements') ?>
 
-				<?php 
-					if ( has_post_thumbnail() ) { 
+				<?php if ( has_post_thumbnail() ) { 
 						$thumb_id = get_post_thumbnail_id();
 						$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'large', true);
 						$thumb_url = $thumb_url_array[0];
@@ -35,16 +34,16 @@
 							    alt="an image">
 							</amp-img>
 							<header class="amp-wp-article-header ampforwp-title">
-								<h1 class="amp-wp-title"><?php echo wp_kses_data( $this->get( 'post_title' ) ); ?></h1>
+                                <h1 class="amp-wp-title"><?php echo wp_kses_data( $this->get( 'post_title' ) ); ?></h1>
 								<?php $post_author = $this->get( 'post_author' ); if ( $post_author ) : ?>
 									<div class="ampforwp-meta-info">							
-										<span>By <?php echo esc_html( $post_author->display_name ); ?></span>
+										<span>
+                                            By <?php echo esc_html( $post_author->display_name ); ?>
+                                        </span>
 									</div>
 								<?php endif; ?>
 							</header>
-						</div><?php
-					}
-				?>
+						</div><?php } ?>
 
 				<div class="amp-post-social-share">
 					<ul>
