@@ -12,6 +12,7 @@ License: GPL2
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// Define the Folder of the theme.
 define('AMPFORWP_CUSTOM_THEME', plugin_dir_path( __FILE__ )); 
 
 // Remove old files

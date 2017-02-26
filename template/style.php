@@ -4,7 +4,7 @@ function ampforwp_custom_style() {
 	$get_customizer = new AMP_Post_Template( $post_id );
 ?>
 /********************************************
-    AMP BAREBONES STYLESHEET 
+    AMP BAREBONES CORE STYLESHEET 
 *********************************************/
     /* Generic WP styling */
     .alignright {
