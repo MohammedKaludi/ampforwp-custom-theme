@@ -48,10 +48,18 @@
         <div class="navigation_heading">
             <?php echo esc_html( $redux_builder_amp['amp-translator-navigate-text'] ); ?>
         </div>
-      <?php wp_nav_menu( array(
+      <?php
+      if ( class_exists( 'AMPforWP_Menu_Walker' ) ) {
+        wp_nav_menu( array(
             'theme_location' => 'amp-menu',
             'walker' => new AMPforWP_Menu_Walker()
         ) );
+      } else {
+        wp_nav_menu( array(
+            'theme_location' => 'amp-menu'
+        ) );
+      }
+
       } ?>
     </div>
 </amp-sidebar>
