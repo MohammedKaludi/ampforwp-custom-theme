@@ -22,7 +22,10 @@ if ( is_home() || is_front_page()  || ( is_archive() && $redux_builder_amp['ampf
 	</style>
 </head>
 
-<body class="<?php echo esc_attr( $this->get( 'body_class' ) ); ?>">
+<body class="single-post <?php
+  if( is_page() )   echo 'amp-single-page';
+  else              echo 'amp-single';
+?>">
 
 <?php $this->load_parts( array( 'header-bar' ) ); ?>
 

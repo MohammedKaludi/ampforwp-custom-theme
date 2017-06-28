@@ -22,7 +22,7 @@ if ( is_home() || is_front_page()  || ( is_archive() && $redux_builder_amp['ampf
 	</style>
 </head>
 
-<body class="<?php echo esc_attr( $this->get( 'body_class' ) ); ?>">
+<body class="amp-index <?php echo esc_attr( $this->get( 'body_class' ) ); ?>">
 
 <?php $this->load_parts( array( 'header-bar' ) ); ?>
 
