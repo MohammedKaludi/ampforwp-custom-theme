@@ -14,7 +14,7 @@ if ( is_home() || is_front_page()  || ( is_archive() && $redux_builder_amp['ampf
     $amp_url 	= str_replace($remove, '', $amp_url) ;
 } ?>
 	<link rel="canonical" href="<?php echo $amp_url ?>">
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	
 	<?php do_action( 'amp_post_template_head', $this ); ?>
 	<style amp-custom>
 		<?php $this->load_parts( array( 'style' ) ); ?>
